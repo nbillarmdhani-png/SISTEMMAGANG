@@ -80,6 +80,7 @@ apiRouter.get('/health', (req, res) => {
 });
 
 app.use('/api', apiRouter);
+app.use(apiRouter); // Fallback jika Vercel Serverless rewrite memotong prefix /api
 
 // Health check
 app.get('/health', (req, res) => {

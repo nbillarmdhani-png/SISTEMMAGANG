@@ -1,6 +1,7 @@
 {
   "name": "rekomendasi-magang",
   "private": true,
+  "type": "module",
   "workspaces": [
     "server",
     "client"
@@ -10,10 +11,28 @@
     "install:all": "npm install",
     "lint": "npm run lint --prefix server && npm run lint --prefix client",
     "test": "npm test --prefix server",
+    "postinstall": "npm run build --prefix server",
     "build": "npm run build --prefix server && npm run build --prefix client",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
     "start": "npm start --prefix server"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.22.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.0.0",
+    "file-type": "^22.1.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^4.6.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
