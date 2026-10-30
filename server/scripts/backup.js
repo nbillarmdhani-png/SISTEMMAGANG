@@ -27,8 +27,17 @@ if (!fs.existsSync(backupDir)) {
 const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
 const backupFile = path.join(backupDir, `${database}_backup_${timestamp}.sql`);
 
+// Cari executable mysqldump (fallback ke default XAMPP jika tidak ada di PATH)
+let mysqldumpExe = 'mysqldump';
+const defaultXamppDump = 'D:\\xampp\\mysql\\bin\\mysqldump.exe';
+if (fs.existsSync(defaultXamppDump)) {
+  mysqldumpExe = `"${defaultXamppDump}"`;
+}
+
+const passArg = password ? `-p"${password}"` : '';
+
 // Eksekusi mysqldump
-const dumpCommand = `mysqldump -u ${user} -p"${password}" -h ${host} -P ${port} ${database} > "${backupFile}"`;
+const dumpCommand = `${mysqldumpExe} -u ${user} ${passArg} -h ${host} -P ${port} ${database} > "${backupFile}"`;
 
 console.log('Memulai proses backup database...');
 

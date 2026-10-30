@@ -117,26 +117,20 @@ async function main() {
 
   // ─── 5. Perusahaan Mitra ──────────────────────────────────────────
   const perusahaanData = [
-    { nama_perusahaan: 'PT Tokopedia', bidang_usaha: 'E-Commerce', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://tokopedia.com', verified: 1 },
-    { nama_perusahaan: 'PT Gojek Indonesia', bidang_usaha: 'Transportasi & Teknologi', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://gojek.com', verified: 1 },
-    { nama_perusahaan: 'PT Bukalapak', bidang_usaha: 'E-Commerce', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://bukalapak.com', verified: 1 },
-    { nama_perusahaan: 'PT Traveloka', bidang_usaha: 'Travel & Pariwisata', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://traveloka.com', verified: 1 },
-    { nama_perusahaan: 'PT Ruangguru', bidang_usaha: 'EdTech', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://ruangguru.com', verified: 1 },
-    { nama_perusahaan: 'PT Telkom Indonesia', bidang_usaha: 'Telekomunikasi', kota: 'Bandung', provinsi: 'Jawa Barat', website: 'https://telkom.co.id', verified: 1 },
-    { nama_perusahaan: 'PT Bank BCA Tbk', bidang_usaha: 'Perbankan & Fintech', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://bca.co.id', verified: 1 },
-    { nama_perusahaan: 'PT Shopee Indonesia', bidang_usaha: 'E-Commerce', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://shopee.co.id', verified: 1 },
-    { nama_perusahaan: 'PT Tiket.com', bidang_usaha: 'Travel & Teknologi', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://tiket.com', verified: 1 },
-    { nama_perusahaan: 'PT Kalibrr Indonesia', bidang_usaha: 'HR Tech', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://kalibrr.com', verified: 1 },
-    { nama_perusahaan: 'PT Blibli', bidang_usaha: 'E-Commerce', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://blibli.com', verified: 1 },
-    { nama_perusahaan: 'PT Xendit', bidang_usaha: 'Fintech & Pembayaran', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://xendit.co', verified: 1 },
-    { nama_perusahaan: 'PT Kata.ai', bidang_usaha: 'AI & NLP', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://kata.ai', verified: 1 },
-    { nama_perusahaan: 'PT Midtrans', bidang_usaha: 'Fintech & Payment Gateway', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://midtrans.com', verified: 1 },
-    { nama_perusahaan: 'PT Astra International', bidang_usaha: 'Otomotif & Teknologi', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://astra.co.id', verified: 1 },
-    { nama_perusahaan: 'PT Mekari', bidang_usaha: 'SaaS & HR Tech', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://mekari.com', verified: 1 },
-    { nama_perusahaan: 'PT Wahana Prestasi Logistik', bidang_usaha: 'Logistik & Supply Chain', kota: 'Surabaya', provinsi: 'Jawa Timur', website: 'https://wahana.com', verified: 1 },
-    { nama_perusahaan: 'PT Dicoding Indonesia', bidang_usaha: 'EdTech & Developer Platform', kota: 'Bandung', provinsi: 'Jawa Barat', website: 'https://dicoding.com', verified: 1 },
-    { nama_perusahaan: 'PT Pinhome', bidang_usaha: 'PropTech', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://pinhome.id', verified: 1 },
-    { nama_perusahaan: 'PT Sirclo Commerce', bidang_usaha: 'E-Commerce Enabler', kota: 'Jakarta', provinsi: 'DKI Jakarta', website: 'https://sirclo.com', verified: 1 },
+    { nama_perusahaan: 'PT GoTo Gojek Tokopedia Tbk', bidang_usaha: 'Teknologi & E-Commerce', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://www.gotocompany.com', verified: 1 },
+    { nama_perusahaan: 'PT Telkom Indonesia (Persero) Tbk', bidang_usaha: 'Telekomunikasi & Digital Services', kota: 'Bandung', provinsi: 'Jawa Barat', website: 'https://www.telkom.co.id', verified: 1 },
+    { nama_perusahaan: 'PT Bank Central Asia Tbk', bidang_usaha: 'Perbankan & Financial Technology', kota: 'Jakarta Pusat', provinsi: 'DKI Jakarta', website: 'https://www.bca.co.id', verified: 1 },
+    { nama_perusahaan: 'PT Bank Mandiri (Persero) Tbk', bidang_usaha: 'Perbankan & Digital Banking', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://bankmandiri.co.id', verified: 1 },
+    { nama_perusahaan: 'PT Shopee International Indonesia', bidang_usaha: 'E-Commerce & Digital Services', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://shopee.co.id', verified: 1 },
+    { nama_perusahaan: 'PT Global Tiket Network (Tiket.com)', bidang_usaha: 'Online Travel Agent (OTA)', kota: 'Jakarta Barat', provinsi: 'DKI Jakarta', website: 'https://www.tiket.com', verified: 1 },
+    { nama_perusahaan: 'PT Astra International Tbk', bidang_usaha: 'Konglomerasi & Otomotif', kota: 'Jakarta Utara', provinsi: 'DKI Jakarta', website: 'https://www.astra.co.id', verified: 1 },
+    { nama_perusahaan: 'PT Ruang Raya Indonesia (Ruangguru)', bidang_usaha: 'Education Technology (EdTech)', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://ruangguru.com', verified: 1 },
+    { nama_perusahaan: 'PT Traveloka Indonesia', bidang_usaha: 'Lifestyle & Travel Tech', kota: 'Tangerang', provinsi: 'Banten', website: 'https://www.traveloka.com', verified: 1 },
+    { nama_perusahaan: 'PT Global Digital Niaga Tbk (Blibli)', bidang_usaha: 'Omnichannel & E-Commerce', kota: 'Jakarta Pusat', provinsi: 'DKI Jakarta', website: 'https://www.blibli.com', verified: 1 },
+    { nama_perusahaan: 'PT Dicoding Akademi Indonesia', bidang_usaha: 'Developer Platform & EdTech', kota: 'Bandung', provinsi: 'Jawa Barat', website: 'https://www.dicoding.com', verified: 1 },
+    { nama_perusahaan: 'PT Midplaza Prima (Mekari)', bidang_usaha: 'Enterprise SaaS & HR Tech', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://mekari.com', verified: 1 },
+    { nama_perusahaan: 'PT Sirclo Digital Kreasi', bidang_usaha: 'E-Commerce Enabler & Cloud Tech', kota: 'Tangerang', provinsi: 'Banten', website: 'https://sirclo.com', verified: 1 },
+    { nama_perusahaan: 'PT Kalibrr Technology Indonesia', bidang_usaha: 'Talent Network & HR Tech', kota: 'Jakarta Selatan', provinsi: 'DKI Jakarta', website: 'https://www.kalibrr.com', verified: 1 },
   ];
 
   const perusahaans = [];
@@ -144,7 +138,10 @@ async function main() {
     const existing = await prisma.perusahaan.findFirst({ where: { nama_perusahaan: p.nama_perusahaan } });
     let per;
     if (existing) {
-      per = existing;
+      per = await prisma.perusahaan.update({
+        where: { id: existing.id },
+        data: p,
+      });
     } else {
       per = await prisma.perusahaan.create({ data: p });
     }
@@ -156,15 +153,17 @@ async function main() {
   const helper = (name) => komps.find((k) => k.nama_kompetensi === name);
 
   const today = new Date();
-  const buka = new Date(today.getFullYear(), today.getMonth(), 1).toISOString();
+  const buka = new Date(today.getFullYear(), today.getMonth() - 1, 1).toISOString();
   const tutup = (m) => new Date(today.getFullYear(), today.getMonth() + m, 0).toISOString();
 
   const lowonganData = [
     {
-      perusahaan_id: perusahaans[0].id, judul_posisi: 'Frontend Engineer Intern',
-      deskripsi: 'Mengembangkan antarmuka web menggunakan React.js dan berkolaborasi dengan desainer UI/UX.',
+      nama_perusahaan: 'PT GoTo Gojek Tokopedia Tbk',
+      judul_posisi: 'Frontend Engineer Intern',
+      deskripsi: 'Mengembangkan antarmuka web modern pada ekosistem GoTo menggunakan React.js dan Next.js, berkolaborasi dengan Product Designer dan Backend Engineer.',
       kuota: 5, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
       min_semester: 5, min_ipk: 3.00, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://www.gotocompany.com/en/careers',
       kompetensi: [
         { nama: 'React.js', bobot: 1.5, wajib: true },
         { nama: 'JavaScript', bobot: 1.5, wajib: true },
@@ -173,10 +172,12 @@ async function main() {
       ],
     },
     {
-      perusahaan_id: perusahaans[0].id, judul_posisi: 'Backend Engineer Intern',
-      deskripsi: 'Membangun layanan API menggunakan Node.js dan Express.js, integrasi dengan berbagai layanan internal.',
-      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      nama_perusahaan: 'PT GoTo Gojek Tokopedia Tbk',
+      judul_posisi: 'Backend Engineer Intern',
+      deskripsi: 'Membangun dan mengoptimasi RESTful & gRPC API berskala jutaan pengguna harian menggunakan Node.js dan MySQL di ekosistem GoTo.',
+      kuota: 4, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
       min_semester: 5, min_ipk: 3.00, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://www.gotocompany.com/en/careers',
       kompetensi: [
         { nama: 'Node.js', bobot: 1.5, wajib: true },
         { nama: 'JavaScript', bobot: 1.5, wajib: true },
@@ -185,22 +186,26 @@ async function main() {
       ],
     },
     {
-      perusahaan_id: perusahaans[1].id, judul_posisi: 'Android Developer Intern',
-      deskripsi: 'Mengembangkan fitur baru pada aplikasi Gojek menggunakan Kotlin dan mengikuti coding standard Google.',
-      kuota: 4, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(2),
+      nama_perusahaan: 'PT GoTo Gojek Tokopedia Tbk',
+      judul_posisi: 'Android Developer Intern',
+      deskripsi: 'Mengembangkan fitur baru pada aplikasi Android Gojek menggunakan Kotlin, Coroutines, dan clean architecture standar industri Google.',
+      kuota: 3, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(2),
       min_semester: 6, min_ipk: 3.20, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://www.gotocompany.com/en/careers',
       kompetensi: [
         { nama: 'Kotlin', bobot: 2.0, wajib: true },
         { nama: 'Android Native', bobot: 2.0, wajib: true },
         { nama: 'Git', bobot: 0.8, wajib: false },
-        { nama: 'MySQL', bobot: 0.5, wajib: false },
+        { nama: 'Problem Solving', bobot: 0.8, wajib: false },
       ],
     },
     {
-      perusahaan_id: perusahaans[1].id, judul_posisi: 'Data Analyst Intern',
-      deskripsi: 'Menganalisis data operasional Gojek untuk meningkatkan pengambilan keputusan bisnis.',
-      kuota: 2, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      nama_perusahaan: 'PT GoTo Gojek Tokopedia Tbk',
+      judul_posisi: 'Data Analyst & BI Intern',
+      deskripsi: 'Menganalisis performa bisnis, membuat dashboard analitik interaktif, dan memproses data operasional berskala besar menggunakan SQL dan Python.',
+      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
       min_semester: 5, min_ipk: 3.10, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://www.gotocompany.com/en/careers',
       kompetensi: [
         { nama: 'Python', bobot: 1.5, wajib: true },
         { nama: 'Data Analysis', bobot: 1.5, wajib: true },
@@ -209,114 +214,165 @@ async function main() {
       ],
     },
     {
-      perusahaan_id: perusahaans[2].id, judul_posisi: 'Full Stack Developer Intern',
-      deskripsi: 'Mengembangkan fitur end-to-end menggunakan React.js dan Node.js pada platform Bukalapak.',
+      nama_perusahaan: 'PT Telkom Indonesia (Persero) Tbk',
+      judul_posisi: 'Digistar Software Engineer Intern',
+      deskripsi: 'Program magang resmi Digistar Telkom Indonesia. Berkontribusi dalam perancangan arsitektur sistem digital dan implementasi microservices telekomunikasi.',
+      kuota: 6, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 5, min_ipk: 3.00, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://internship.telkom.co.id/',
+      kompetensi: [
+        { nama: 'JavaScript', bobot: 1.5, wajib: true },
+        { nama: 'Python', bobot: 1.2, wajib: false },
+        { nama: 'Docker', bobot: 1.0, wajib: false },
+        { nama: 'Git', bobot: 0.8, wajib: true },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Telkom Indonesia (Persero) Tbk',
+      judul_posisi: 'Digistar Network & Cloud Engineer Intern',
+      deskripsi: 'Mendukung tim infrastruktur Telkom dalam pengelolaan jaringan telekomunikasi nasional, administrasi Linux servers, dan otomatisasi deployment.',
+      kuota: 4, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(2),
+      min_semester: 5, min_ipk: 2.80, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://internship.telkom.co.id/',
+      kompetensi: [
+        { nama: 'Linux', bobot: 1.8, wajib: true },
+        { nama: 'Docker', bobot: 1.2, wajib: true },
+        { nama: 'CI/CD (GitHub Actions)', bobot: 1.0, wajib: false },
+        { nama: 'Problem Solving', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Bank Central Asia Tbk',
+      judul_posisi: 'IT Developer Trainee / Intern',
+      deskripsi: 'Program pemagangan IT perbankan resmi BCA. Membantu pengembangan modul aplikasi perbankan digital menggunakan Java, Spring Boot, dan database relational.',
+      kuota: 5, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 6, min_ipk: 3.25, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://karir.bca.co.id/',
+      kompetensi: [
+        { nama: 'Java', bobot: 2.0, wajib: true },
+        { nama: 'Spring Boot', bobot: 1.5, wajib: true },
+        { nama: 'MySQL', bobot: 1.0, wajib: false },
+        { nama: 'Problem Solving', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Bank Mandiri (Persero) Tbk',
+      judul_posisi: 'Digital Banking IT Intern',
+      deskripsi: 'Membantu riset dan implementasi sistem perbankan digital, pengujian API keuangan modern, serta eksplorasi arsitektur perbankan masa depan di Bank Mandiri.',
+      kuota: 4, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 6, min_ipk: 3.20, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://bankmandiri.co.id/karir',
+      kompetensi: [
+        { nama: 'Java', bobot: 1.8, wajib: true },
+        { nama: 'MySQL', bobot: 1.2, wajib: true },
+        { nama: 'Problem Solving', bobot: 1.0, wajib: false },
+        { nama: 'Komunikasi', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Shopee International Indonesia',
+      judul_posisi: 'Mobile Developer Intern (React Native)',
+      deskripsi: 'Program magang Shopee Apprentice. Mengembangkan modul mobile e-commerce multi-platform menggunakan React Native dan TypeScript bersama tim engineer Shopee.',
+      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(4),
+      min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://careers.shopee.co.id/',
+      kompetensi: [
+        { nama: 'React Native', bobot: 2.0, wajib: true },
+        { nama: 'JavaScript', bobot: 1.5, wajib: true },
+        { nama: 'TypeScript', bobot: 1.0, wajib: false },
+        { nama: 'Git', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Global Tiket Network (Tiket.com)',
+      judul_posisi: 'QA & Software Development in Test Intern',
+      deskripsi: 'Merancang test scenarios, mengotomasi end-to-end testing web & mobile, dan memastikan keandalan performa platform pemesanan tiket online tiket.com.',
+      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 5, min_ipk: 2.80, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://careers.tiket.com/',
+      kompetensi: [
+        { nama: 'Python', bobot: 1.2, wajib: false },
+        { nama: 'Problem Solving', bobot: 1.5, wajib: true },
+        { nama: 'Git', bobot: 1.0, wajib: false },
+        { nama: 'Komunikasi', bobot: 1.0, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Astra International Tbk',
+      judul_posisi: 'IT & Digital Transformation Intern',
+      deskripsi: 'Program pemagangan resmi Grup Astra untuk digitalisasi lini bisnis otomotif, integrasi sistem enterprise, dan analitik data operasional.',
+      kuota: 4, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 5, min_ipk: 3.00, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://career.astra.co.id/',
+      kompetensi: [
+        { nama: 'Python', bobot: 1.5, wajib: true },
+        { nama: 'Data Analysis', bobot: 1.2, wajib: true },
+        { nama: 'MySQL', bobot: 1.0, wajib: false },
+        { nama: 'Problem Solving', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Ruang Raya Indonesia (Ruangguru)',
+      judul_posisi: 'Ruangguru LEAP Software Engineer Intern',
+      deskripsi: 'Program akselerasi talenta Ruangguru LEAP. Membangun platform teknologi edukasi interaktif bagi jutaan siswa menggunakan React.js dan Node.js.',
+      kuota: 5, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://career.ruangguru.com/',
+      kompetensi: [
+        { nama: 'JavaScript', bobot: 1.5, wajib: true },
+        { nama: 'React.js', bobot: 1.5, wajib: true },
+        { nama: 'Node.js', bobot: 1.0, wajib: false },
+        { nama: 'Git', bobot: 0.8, wajib: true },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Traveloka Indonesia',
+      judul_posisi: 'iOS Developer Intern',
+      deskripsi: 'Membantu riset dan pembuatan fitur antarmuka aplikasi Traveloka di platform iOS menggunakan Swift dan Apple Human Interface Guidelines.',
+      kuota: 2, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(2),
+      min_semester: 6, min_ipk: 3.30, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://www.traveloka.com/en-id/careers',
+      kompetensi: [
+        { nama: 'Swift', bobot: 2.0, wajib: true },
+        { nama: 'Git', bobot: 1.0, wajib: false },
+        { nama: 'Problem Solving', bobot: 1.0, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Global Digital Niaga Tbk (Blibli)',
+      judul_posisi: 'Full Stack Developer Intern (Future Program)',
+      deskripsi: 'Program magang Blibli Future Program untuk mahasiswa tingkat akhir. Terlibat langsung dalam pengembangan arsitektur e-commerce omnichannel modern.',
       kuota: 4, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(4),
       min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://careers.blibli.com/',
       kompetensi: [
-        { nama: 'React.js', bobot: 1.2, wajib: true },
-        { nama: 'Node.js', bobot: 1.2, wajib: true },
+        { nama: 'React.js', bobot: 1.5, wajib: true },
+        { nama: 'Java', bobot: 1.2, wajib: false },
         { nama: 'MySQL', bobot: 1.0, wajib: false },
         { nama: 'Git', bobot: 0.8, wajib: false },
       ],
     },
     {
-      perusahaan_id: perusahaans[3].id, judul_posisi: 'iOS Developer Intern',
-      deskripsi: 'Membantu pengembangan fitur baru pada aplikasi iOS Traveloka menggunakan Swift.',
-      kuota: 2, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(2),
-      min_semester: 7, min_ipk: 3.30, is_remote: 0, status: 'aktif',
-      kompetensi: [
-        { nama: 'Swift', bobot: 2.0, wajib: true },
-        { nama: 'Git', bobot: 0.8, wajib: false },
-        { nama: 'Problem Solving', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[4].id, judul_posisi: 'Software Engineer Intern',
-      deskripsi: 'Berkontribusi pada pengembangan platform belajar Ruangguru menggunakan berbagai teknologi modern.',
-      kuota: 6, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      nama_perusahaan: 'PT Dicoding Akademi Indonesia',
+      judul_posisi: 'Platform Engineer Intern',
+      deskripsi: 'Ikut mengembangkan platform belajar coding online terbesar di Indonesia menggunakan Next.js, TypeScript, dan automasi grading sistem.',
+      kuota: 4, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(4),
       min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://www.dicoding.com/jobs',
       kompetensi: [
-        { nama: 'JavaScript', bobot: 1.2, wajib: true },
-        { nama: 'React.js', bobot: 1.2, wajib: false },
-        { nama: 'Python', bobot: 1.0, wajib: false },
-        { nama: 'Git', bobot: 0.8, wajib: true },
+        { nama: 'Next.js', bobot: 1.5, wajib: true },
+        { nama: 'TypeScript', bobot: 1.5, wajib: true },
+        { nama: 'Node.js', bobot: 1.0, wajib: false },
+        { nama: 'Docker', bobot: 0.8, wajib: false },
       ],
     },
     {
-      perusahaan_id: perusahaans[5].id, judul_posisi: 'Network Engineer Intern',
-      deskripsi: 'Mendukung tim jaringan Telkom dalam pengelolaan infrastruktur jaringan nasional.',
-      kuota: 4, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(2),
-      min_semester: 5, min_ipk: 2.75, is_remote: 0, status: 'aktif',
-      kompetensi: [
-        { nama: 'Linux', bobot: 1.5, wajib: true },
-        { nama: 'Docker', bobot: 1.0, wajib: false },
-        { nama: 'CI/CD (GitHub Actions)', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[6].id, judul_posisi: 'IT Developer Intern (Core Banking)',
-      deskripsi: 'Membantu pengembangan modul perbankan digital BCA menggunakan Java dan Spring Boot.',
-      kuota: 3, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
-      min_semester: 7, min_ipk: 3.25, is_remote: 0, status: 'aktif',
-      kompetensi: [
-        { nama: 'Java', bobot: 2.0, wajib: true },
-        { nama: 'Spring Boot', bobot: 1.5, wajib: true },
-        { nama: 'PostgreSQL', bobot: 1.0, wajib: false },
-        { nama: 'Git', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[7].id, judul_posisi: 'React Native Developer Intern',
-      deskripsi: 'Mengembangkan fitur cross-platform untuk aplikasi Shopee menggunakan React Native.',
-      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(4),
-      min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
-      kompetensi: [
-        { nama: 'React Native', bobot: 2.0, wajib: true },
-        { nama: 'JavaScript', bobot: 1.5, wajib: true },
-        { nama: 'TypeScript', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[8].id, judul_posisi: 'QA Engineer Intern',
-      deskripsi: 'Melakukan pengujian manual dan otomatis pada aplikasi Tiket.com untuk memastikan kualitas produk.',
-      kuota: 2, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
-      min_semester: 5, min_ipk: 2.80, is_remote: 0, status: 'aktif',
-      kompetensi: [
-        { nama: 'Python', bobot: 1.0, wajib: false },
-        { nama: 'Problem Solving', bobot: 1.5, wajib: true },
-        { nama: 'Komunikasi', bobot: 1.0, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[11].id, judul_posisi: 'Backend Developer Intern (Fintech)',
-      deskripsi: 'Membangun dan memelihara API payment gateway Xendit menggunakan Go.',
-      kuota: 2, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(2),
-      min_semester: 7, min_ipk: 3.30, is_remote: 1, status: 'aktif',
-      kompetensi: [
-        { nama: 'Go', bobot: 2.0, wajib: true },
-        { nama: 'PostgreSQL', bobot: 1.5, wajib: true },
-        { nama: 'Docker', bobot: 1.0, wajib: false },
-        { nama: 'Redis', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[12].id, judul_posisi: 'Machine Learning Engineer Intern',
-      deskripsi: 'Riset dan implementasi model NLP untuk platform chatbot percakapan Kata.ai.',
-      kuota: 2, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
-      min_semester: 7, min_ipk: 3.40, is_remote: 1, status: 'aktif',
-      kompetensi: [
-        { nama: 'Python', bobot: 2.0, wajib: true },
-        { nama: 'Machine Learning', bobot: 2.0, wajib: true },
-        { nama: 'TensorFlow', bobot: 1.5, wajib: false },
-        { nama: 'Data Analysis', bobot: 1.0, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[15].id, judul_posisi: 'Full Stack Laravel Developer Intern',
-      deskripsi: 'Mengembangkan fitur modul HR dan payroll menggunakan Laravel dan Vue.js di platform Mekari.',
+      nama_perusahaan: 'PT Midplaza Prima (Mekari)',
+      judul_posisi: 'Full Stack Web Developer Intern (Laravel)',
+      deskripsi: 'Mengembangkan fitur SaaS otomasi bisnis, HR payroll, dan akuntansi berbasis web menggunakan PHP Laravel dan arsitektur REST API modern.',
       kuota: 4, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
       min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://mekari.com/careers/',
       kompetensi: [
         { nama: 'PHP', bobot: 1.5, wajib: true },
         { nama: 'Laravel', bobot: 1.5, wajib: true },
@@ -325,80 +381,65 @@ async function main() {
       ],
     },
     {
-      perusahaan_id: perusahaans[17].id, judul_posisi: 'Platform Engineer Intern',
-      deskripsi: 'Ikut mengembangkan platform belajar coding Dicoding menggunakan Next.js dan microservices.',
-      kuota: 5, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(4),
-      min_semester: 5, min_ipk: 3.00, is_remote: 1, status: 'aktif',
-      kompetensi: [
-        { nama: 'Next.js', bobot: 1.5, wajib: true },
-        { nama: 'TypeScript', bobot: 1.2, wajib: false },
-        { nama: 'Node.js', bobot: 1.0, wajib: false },
-        { nama: 'Docker', bobot: 0.8, wajib: false },
-      ],
-    },
-    {
-      perusahaan_id: perusahaans[19].id, judul_posisi: 'DevOps Engineer Intern',
-      deskripsi: 'Membantu pengelolaan infrastruktur cloud dan pipeline CI/CD untuk layanan e-commerce Sirclo.',
-      kuota: 2, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
+      nama_perusahaan: 'PT Sirclo Digital Kreasi',
+      judul_posisi: 'Cloud Infrastructure & DevOps Intern',
+      deskripsi: 'Membantu pengelolaan container Docker, orkestrasi cloud, serta pipeline continuous integration (CI/CD) untuk platform e-commerce enabler.',
+      kuota: 3, durasi_bulan: 3, tgl_buka: buka, tgl_tutup: tutup(3),
       min_semester: 6, min_ipk: 3.00, is_remote: 0, status: 'aktif',
+      link_pendaftaran: 'https://sirclo.com/careers/',
       kompetensi: [
         { nama: 'Docker', bobot: 2.0, wajib: true },
         { nama: 'Linux', bobot: 1.5, wajib: true },
-        { nama: 'CI/CD (GitHub Actions)', bobot: 1.5, wajib: false },
-        { nama: 'Git', bobot: 1.0, wajib: false },
+        { nama: 'CI/CD (GitHub Actions)', bobot: 1.2, wajib: false },
+        { nama: 'Git', bobot: 0.8, wajib: false },
+      ],
+    },
+    {
+      nama_perusahaan: 'PT Kalibrr Technology Indonesia',
+      judul_posisi: 'Machine Learning & AI Engineer Intern',
+      deskripsi: 'Melakukan riset algoritma rekomendasi karier berbasis pemrosesan bahasa alami (NLP) dan integrasi model machine learning ke dalam sistem produksi.',
+      kuota: 3, durasi_bulan: 6, tgl_buka: buka, tgl_tutup: tutup(3),
+      min_semester: 6, min_ipk: 3.30, is_remote: 1, status: 'aktif',
+      link_pendaftaran: 'https://www.kalibrr.com/job-board/te/internship/1',
+      kompetensi: [
+        { nama: 'Python', bobot: 2.0, wajib: true },
+        { nama: 'Machine Learning', bobot: 2.0, wajib: true },
+        { nama: 'TensorFlow', bobot: 1.2, wajib: false },
+        { nama: 'Data Analysis', bobot: 1.0, wajib: false },
       ],
     },
   ];
 
+  // Hapus semua lowongan lama agar hanya lowongan resmi terverifikasi yang tersimpan
+  await prisma.lowongan_magang.deleteMany();
+
   let lowonganCount = 0;
   for (const l of lowonganData) {
-    const { kompetensi, ...lowonganFields } = l;
-    const perus = perusahaans.find((p) => p.id === lowonganFields.perusahaan_id);
-    const linkPendaftaran = lowonganFields.link_pendaftaran || (perus?.website ? `${perus.website}/careers` : 'https://kampusmerdeka.kemdikbud.go.id/program/magang');
+    const { kompetensi, nama_perusahaan, ...lowonganFields } = l;
+    const perus = perusahaans.find((p) => p.nama_perusahaan === nama_perusahaan);
+    if (!perus) continue;
 
-    const existing = await prisma.lowongan_magang.findFirst({
-      where: { judul_posisi: lowonganFields.judul_posisi, perusahaan_id: lowonganFields.perusahaan_id },
+    const lowongan = await prisma.lowongan_magang.create({
+      data: {
+        ...lowonganFields,
+        perusahaan_id: perus.id,
+        tgl_buka: new Date(lowonganFields.tgl_buka),
+        tgl_tutup: new Date(lowonganFields.tgl_tutup),
+      },
     });
-
-    let lowongan;
-    if (existing) {
-      lowongan = await prisma.lowongan_magang.update({
-        where: { id: existing.id },
-        data: {
-          ...lowonganFields,
-          link_pendaftaran: linkPendaftaran,
-          tgl_buka: new Date(lowonganFields.tgl_buka),
-          tgl_tutup: new Date(lowonganFields.tgl_tutup),
-        },
-      });
-    } else {
-      lowongan = await prisma.lowongan_magang.create({
-        data: {
-          ...lowonganFields,
-          link_pendaftaran: linkPendaftaran,
-          tgl_buka: new Date(lowonganFields.tgl_buka),
-          tgl_tutup: new Date(lowonganFields.tgl_tutup),
-        },
-      });
-    }
 
     // Tambahkan kompetensi yang dibutuhkan
     for (const k of kompetensi) {
       const komp = helper(k.nama);
       if (!komp) continue;
-      const existingLK = await prisma.lowongan_kompetensi.findFirst({
-        where: { lowongan_id: lowongan.id, kompetensi_id: komp.id },
+      await prisma.lowongan_kompetensi.create({
+        data: {
+          lowongan_id: lowongan.id,
+          kompetensi_id: komp.id,
+          bobot: k.bobot,
+          wajib: k.wajib ? 1 : 0,
+        },
       });
-      if (!existingLK) {
-        await prisma.lowongan_kompetensi.create({
-          data: {
-            lowongan_id: lowongan.id,
-            kompetensi_id: komp.id,
-            bobot: k.bobot,
-            wajib: k.wajib ? 1 : 0,
-          },
-        });
-      }
     }
 
     lowonganCount++;
