@@ -1,0 +1,305 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id         Int                   @id @default(autoincrement())
+  email      String                @unique(map: "uq_users_email") @db.VarChar(150)
+  password   String                @db.VarChar(255)
+  role       users_role            @default(mahasiswa)
+  is_active  Int                   @default(1) @db.TinyInt
+  created_at DateTime              @default(now()) @db.Timestamp(0)
+  updated_at DateTime              @default(now()) @db.Timestamp(0)
+  mahasiswa  mahasiswa?
+  notifikasi notifikasi[]
+  perusahaan perusahaan[]
+
+  @@index([role], map: "idx_users_role")
+}
+
+model program_studi {
+  id         Int                    @id @default(autoincrement())
+  kode_prodi String                 @unique(map: "uq_prodi_kode") @db.VarChar(10)
+  nama_prodi String                 @db.VarChar(100)
+  fakultas   String                 @db.VarChar(100)
+  jenjang    program_studi_jenjang  @default(S1)
+  mahasiswa  mahasiswa[]
+}
+
+model mahasiswa {
+  id                   Int                            @id @default(autoincrement())
+  user_id              Int                            @unique(map: "uq_mahasiswa_user")
+  prodi_id             Int
+  nim                  String                         @unique(map: "uq_mahasiswa_nim") @db.VarChar(20)
+  nama_lengkap         String                         @db.VarChar(150)
+  semester             Int                            @default(1) @db.TinyInt
+  ipk                  Decimal                        @default(0.00) @db.Decimal(3, 2)
+  foto                 String?                        @db.VarChar(255)
+  no_telp              String?                        @db.VarChar(20)
+  alamat               String?                        @db.Text
+  cv_path              String?                        @db.VarChar(255)
+  porto_url            String?                        @db.VarChar(255)
+  created_at           DateTime                       @default(now()) @db.Timestamp(0)
+  updated_at           DateTime                       @default(now()) @db.Timestamp(0)
+  chatbot_sesi         chatbot_sesi[]
+  lamaran              lamaran[]
+  program_studi        program_studi                  @relation(fields: [prodi_id], references: [id], onUpdate: Restrict, map: "fk_mahasiswa_prodi")
+  users                users                          @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_mahasiswa_user")
+  mahasiswa_kompetensi mahasiswa_kompetensi[]
+  rekomendasi          rekomendasi[]
+
+  @@index([prodi_id], map: "idx_mahasiswa_prodi")
+}
+
+model kategori_kompetensi {
+  id              Int          @id @default(autoincrement())
+  nama_kategori   String       @unique(map: "uq_kategori_nama") @db.VarChar(100)
+  deskripsi       String?      @db.Text
+  kompetensi      kompetensi[]
+}
+
+model kompetensi {
+  id                            Int                             @id @default(autoincrement())
+  kategori_id                   Int
+  nama_kompetensi               String                          @unique(map: "uq_kompetensi_nama") @db.VarChar(100)
+  deskripsi                     String?                         @db.Text
+  icon                          String?                         @db.VarChar(100)
+  chatbot_kompetensi_terdeteksi chatbot_kompetensi_terdeteksi[]
+  kategori_kompetensi           kategori_kompetensi             @relation(fields: [kategori_id], references: [id], onUpdate: Restrict, map: "fk_kompetensi_kategori")
+  lowongan_kompetensi           lowongan_kompetensi[]
+  mahasiswa_kompetensi          mahasiswa_kompetensi[]
+
+  @@index([kategori_id], map: "idx_kompetensi_kategori")
+}
+
+model mahasiswa_kompetensi {
+  id            Int                         @id @default(autoincrement())
+  mahasiswa_id  Int
+  kompetensi_id Int
+  level         mahasiswa_kompetensi_level  @default(pemula)
+  sumber        mahasiswa_kompetensi_sumber @default(manual)
+  bukti_url     String?                     @db.VarChar(255)
+  created_at    DateTime                    @default(now()) @db.Timestamp(0)
+  kompetensi    kompetensi                  @relation(fields: [kompetensi_id], references: [id], onUpdate: Restrict, map: "fk_mk_kompetensi")
+  mahasiswa     mahasiswa                   @relation(fields: [mahasiswa_id], references: [id], onDelete: Cascade, map: "fk_mk_mahasiswa")
+
+  @@unique([mahasiswa_id, kompetensi_id], map: "uq_mahasiswa_kompetensi")
+  @@index([kompetensi_id], map: "idx_mk_kompetensi")
+}
+
+model perusahaan {
+  id              Int               @id @default(autoincrement())
+  user_id         Int?
+  nama_perusahaan String            @db.VarChar(150)
+  bidang_usaha    String?           @db.VarChar(100)
+  deskripsi       String?           @db.Text
+  alamat          String?           @db.Text
+  kota            String?           @db.VarChar(100)
+  provinsi        String?           @db.VarChar(100)
+  website         String?           @db.VarChar(255)
+  logo            String?           @db.VarChar(255)
+  email_kontak    String?           @db.VarChar(150)
+  no_telp         String?           @db.VarChar(20)
+  verified        Int               @default(0) @db.TinyInt
+  created_at      DateTime          @default(now()) @db.Timestamp(0)
+  updated_at      DateTime          @default(now()) @db.Timestamp(0)
+  lowongan_magang lowongan_magang[]
+  users           users?            @relation(fields: [user_id], references: [id], onDelete: SetNull, map: "fk_perusahaan_user")
+
+  @@index([kota], map: "idx_perusahaan_kota")
+  @@index([verified], map: "idx_perusahaan_verified")
+  @@index([user_id], map: "fk_perusahaan_user")
+}
+
+model lowongan_magang {
+  id                  Int                    @id @default(autoincrement())
+  perusahaan_id       Int
+  judul_posisi        String                 @db.VarChar(150)
+  deskripsi           String?                @db.Text
+  kuota               Int                    @default(1)
+  durasi_bulan        Int                    @default(3) @db.TinyInt
+  tgl_buka            DateTime               @db.Date
+  tgl_tutup           DateTime               @db.Date
+  min_semester        Int?                   @db.TinyInt
+  min_ipk             Decimal?               @db.Decimal(3, 2)
+  is_remote           Int                    @default(0) @db.TinyInt
+  status              lowongan_magang_status @default(draft)
+  created_at          DateTime               @default(now()) @db.Timestamp(0)
+  updated_at          DateTime               @default(now()) @db.Timestamp(0)
+  lamaran             lamaran[]
+  lowongan_kompetensi lowongan_kompetensi[]
+  perusahaan          perusahaan             @relation(fields: [perusahaan_id], references: [id], onDelete: Cascade, map: "fk_lowongan_perusahaan")
+  rekomendasi         rekomendasi[]
+
+  @@index([perusahaan_id], map: "idx_lowongan_perusahaan")
+  @@index([status], map: "idx_lowongan_status")
+  @@index([tgl_tutup], map: "idx_lowongan_tgl_tutup")
+}
+
+model lowongan_kompetensi {
+  id              Int             @id @default(autoincrement())
+  lowongan_id     Int
+  kompetensi_id   Int
+  bobot           Decimal         @default(1.00) @db.Decimal(3, 2)
+  wajib           Int             @default(0) @db.TinyInt
+  kompetensi      kompetensi      @relation(fields: [kompetensi_id], references: [id], onUpdate: Restrict, map: "fk_lk_kompetensi")
+  lowongan_magang lowongan_magang @relation(fields: [lowongan_id], references: [id], onDelete: Cascade, map: "fk_lk_lowongan")
+
+  @@unique([lowongan_id, kompetensi_id], map: "uq_lowongan_kompetensi")
+  @@index([kompetensi_id], map: "idx_lk_kompetensi")
+}
+
+model rekomendasi {
+  id                 Int             @id @default(autoincrement())
+  mahasiswa_id       Int
+  lowongan_id        Int
+  skor_kecocokan     Decimal         @default(0.00) @db.Decimal(5, 2)
+  metode             String          @default("SAW") @db.VarChar(50)
+  detail_perhitungan Json?
+  generated_at       DateTime        @default(now()) @db.Timestamp(0)
+  lowongan_magang    lowongan_magang @relation(fields: [lowongan_id], references: [id], onDelete: Cascade, map: "fk_rek_lowongan")
+  mahasiswa          mahasiswa       @relation(fields: [mahasiswa_id], references: [id], onDelete: Cascade, map: "fk_rek_mahasiswa")
+
+  @@index([lowongan_id], map: "idx_rek_lowongan")
+  @@index([generated_at], map: "idx_rek_generated")
+  @@index([mahasiswa_id], map: "idx_rek_mahasiswa")
+  @@index([skor_kecocokan(sort: Desc)], map: "idx_rek_skor")
+}
+
+model chatbot_sesi {
+  id                            Int                             @id @default(autoincrement())
+  mahasiswa_id                  Int
+  judul_sesi                    String?                         @db.VarChar(150)
+  status                        chatbot_sesi_status             @default(aktif)
+  started_at                    DateTime                        @default(now()) @db.Timestamp(0)
+  ended_at                      DateTime?                       @db.Timestamp(0)
+  chatbot_kompetensi_terdeteksi chatbot_kompetensi_terdeteksi[]
+  chatbot_pesan                 chatbot_pesan[]
+  mahasiswa                     mahasiswa                       @relation(fields: [mahasiswa_id], references: [id], onDelete: Cascade, map: "fk_sesi_mahasiswa")
+
+  @@index([mahasiswa_id], map: "idx_sesi_mahasiswa")
+  @@index([status], map: "idx_sesi_status")
+}
+
+model chatbot_pesan {
+  id           Int                 @id @default(autoincrement())
+  sesi_id      Int
+  peran        chatbot_pesan_peran
+  isi_pesan    String              @db.Text
+  intent       String?             @db.VarChar(100)
+  entitas      Json?
+  created_at   DateTime            @default(now()) @db.Timestamp(0)
+  chatbot_sesi chatbot_sesi        @relation(fields: [sesi_id], references: [id], onDelete: Cascade, map: "fk_pesan_sesi")
+
+  @@index([created_at], map: "idx_pesan_created")
+  @@index([sesi_id], map: "idx_pesan_sesi")
+}
+
+model chatbot_kompetensi_terdeteksi {
+  id            Int                                 @id @default(autoincrement())
+  sesi_id       Int
+  kompetensi_id Int
+  level         chatbot_kompetensi_terdeteksi_level @default(pemula)
+  confidence    Decimal                             @default(0.000) @db.Decimal(4, 3)
+  dikonfirmasi  Int                                 @default(0) @db.TinyInt
+  created_at    DateTime                            @default(now()) @db.Timestamp(0)
+  kompetensi    kompetensi                          @relation(fields: [kompetensi_id], references: [id], onUpdate: Restrict, map: "fk_ckt_kompetensi")
+  chatbot_sesi  chatbot_sesi                        @relation(fields: [sesi_id], references: [id], onDelete: Cascade, map: "fk_ckt_sesi")
+
+  @@index([kompetensi_id], map: "idx_ckt_kompetensi")
+  @@index([sesi_id], map: "idx_ckt_sesi")
+}
+
+model lamaran {
+  id                 Int             @id @default(autoincrement())
+  mahasiswa_id       Int
+  lowongan_id        Int
+  sumber_rekomendasi Int             @default(0) @db.TinyInt
+  surat_pengantar    String?         @db.Text
+  status             lamaran_status  @default(menunggu)
+  tgl_lamar          DateTime        @default(now()) @db.Timestamp(0)
+  tgl_respons        DateTime?       @db.Timestamp(0)
+  catatan_perusahaan String?         @db.Text
+  lowongan_magang    lowongan_magang @relation(fields: [lowongan_id], references: [id], onDelete: Cascade, map: "fk_lamaran_lowongan")
+  mahasiswa          mahasiswa       @relation(fields: [mahasiswa_id], references: [id], onDelete: Cascade, map: "fk_lamaran_mahasiswa")
+
+  @@unique([mahasiswa_id, lowongan_id], map: "uq_lamaran")
+  @@index([lowongan_id], map: "idx_lamaran_lowongan")
+  @@index([status], map: "idx_lamaran_status")
+}
+
+model notifikasi {
+  id           Int      @id @default(autoincrement())
+  user_id      Int
+  judul        String   @db.VarChar(200)
+  pesan        String   @db.Text
+  tipe         String?  @db.VarChar(50)
+  referensi_id Int?
+  dibaca       Int      @default(0) @db.TinyInt
+  created_at   DateTime @default(now()) @db.Timestamp(0)
+  users        users    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "fk_notif_user")
+
+  @@index([created_at], map: "idx_notif_created")
+  @@index([dibaca], map: "idx_notif_dibaca")
+  @@index([user_id], map: "idx_notif_user")
+}
+
+enum users_role {
+  admin
+  mahasiswa
+  dosen
+  perusahaan
+}
+
+enum program_studi_jenjang {
+  D3
+  S1
+  S2
+}
+
+enum mahasiswa_kompetensi_level {
+  pemula
+  menengah
+  mahir
+}
+
+enum mahasiswa_kompetensi_sumber {
+  manual
+  chatbot
+  import
+}
+
+enum lowongan_magang_status {
+  draft
+  aktif
+  ditutup
+}
+
+enum chatbot_sesi_status {
+  aktif
+  selesai
+  dibatalkan
+}
+
+enum chatbot_pesan_peran {
+  user
+  bot
+}
+
+enum chatbot_kompetensi_terdeteksi_level {
+  pemula
+  menengah
+  mahir
+}
+
+enum lamaran_status {
+  menunggu
+  diterima
+  ditolak
+  dibatalkan
+}
