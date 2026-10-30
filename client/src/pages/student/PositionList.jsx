@@ -8,13 +8,13 @@ import { Skeleton } from "../../components/ui/Skeleton"
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center justify-center py-20 text-center">
-      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
-        <Search className="h-8 w-8 text-slate-300" />
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-white py-20 px-4 text-center">
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
+        <Search className="h-8 w-8" />
       </div>
-      <h3 className="text-lg font-semibold text-slate-800">Tidak ada lowongan ditemukan</h3>
-      <p className="mt-2 text-sm text-slate-500 max-w-xs">
-        Coba ubah kata kunci atau hapus filter untuk melihat lebih banyak lowongan.
+      <h3 className="text-base font-bold text-slate-900">Tidak Ada Lowongan Ditemukan</h3>
+      <p className="mt-1.5 text-xs text-slate-500 max-w-xs leading-relaxed">
+        Coba gunakan kata kunci lain atau bersihkan filter untuk melihat semua posisi magang yang tersedia.
       </p>
     </div>
   )
@@ -83,25 +83,25 @@ export default function PositionList() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Daftar Lowongan Magang</h1>
-        <p className="mt-2 text-slate-500">Temukan peluang magang yang sesuai dengan kompetensimu</p>
+        <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">Eksplor Lowongan Magang</h1>
+        <p className="mt-1 text-xs text-slate-500">Temukan posisi magang berkualitas dari mitra industri terpercaya</p>
       </div>
 
-      {/* Search bar */}
-      <div className="flex gap-3">
+      {/* Search & Filter Toolbar */}
+      <div className="flex gap-2.5">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             id="input-cari-lowongan"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari posisi, nama perusahaan..."
-            className="w-full rounded-xl border border-slate-300 bg-white pl-9 pr-4 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Cari berdasarkan judul posisi, teknologi, atau perusahaan..."
+            className="w-full rounded-xl border border-slate-200/90 bg-white pl-10 pr-10 py-2.5 text-xs shadow-subtle focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-slate-400"
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
             >
               <X className="h-4 w-4" />
             </button>
@@ -110,16 +110,16 @@ export default function PositionList() {
         <button
           id="btn-filter"
           onClick={() => setFilterOpen(!filterOpen)}
-          className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium shadow-sm transition-colors ${
+          className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-xs font-semibold shadow-subtle transition-all ${
             filterOpen || hasFilters
-              ? "border-blue-500 bg-blue-50 text-blue-700"
-              : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+              ? "border-blue-500 bg-blue-50 text-blue-700 shadow-sm"
+              : "border-slate-200/80 bg-white text-slate-700 hover:bg-slate-50"
           }`}
         >
-          <SlidersHorizontal className="h-4 w-4" />
+          <SlidersHorizontal className="h-3.5 w-3.5" />
           Filter
           {hasFilters && (
-            <span className="ml-1 rounded-full bg-blue-600 text-white text-xs w-5 h-5 flex items-center justify-center">
+            <span className="rounded-full bg-blue-600 text-white text-[10px] h-4 w-4 flex items-center justify-center font-bold">
               {[debouncedQuery, debouncedKota, isRemote].filter(Boolean).length}
             </span>
           )}
@@ -128,37 +128,37 @@ export default function PositionList() {
 
       {/* Filter panel */}
       {filterOpen && (
-        <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm grid gap-4 sm:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-card grid gap-4 sm:grid-cols-3 animate-in fade-in duration-200">
           <div>
-            <label className="block text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wide">Kota</label>
+            <label className="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Lokasi / Kota</label>
             <input
               id="input-filter-kota"
               value={kota}
               onChange={(e) => setKota(e.target.value)}
-              placeholder="Jakarta, Bandung..."
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Contoh: Jakarta, Bandung..."
+              className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
             />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wide">Tipe Kerja</label>
+            <label className="block text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Metode Kerja</label>
             <select
               id="select-filter-remote"
               value={isRemote}
               onChange={(e) => setIsRemote(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
             >
-              <option value="">Semua</option>
-              <option value="true">Remote</option>
-              <option value="false">Onsite</option>
+              <option value="">Semua Metode</option>
+              <option value="true">Remote (Kerja Jarak Jauh)</option>
+              <option value="false">Onsite (Di Kantor)</option>
             </select>
           </div>
           <div className="flex items-end">
             <button
               id="btn-hapus-filter"
               onClick={clearFilters}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 transition-colors"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >
-              Hapus Filter
+              Reset Semua Filter
             </button>
           </div>
         </div>
