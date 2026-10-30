@@ -33,7 +33,22 @@ const rawOrigins = env.CLIENT_URL.includes(',')
 // Buang trailing slash agar pencocokan origin CORS selalu akurat
 const allowedOrigins = rawOrigins.map((u) => u.replace(/\/+$/, ''));
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    // Izinkan request tanpa origin (seperti curl, mobile app, postman, healthcheck)
+    if (!origin) return callback(null, true);
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/.*\.vercel\.app$/.test(origin) ||
+      /^http:\/\/localhost:\d+$/.test(origin);
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin ${origin} tidak diizinkan oleh CORS`));
+    }
+  },
+  credentials: true,
+}));
 app.use(cookieParser());
 app.use(generalLimiter);
 
@@ -60,6 +75,9 @@ apiRouter.use('/recommendations', recommendationRoutes);
 apiRouter.use('/applications', applicationRoutes);
 apiRouter.use('/notifications', notificationRoutes);
 apiRouter.use('/admin', adminRoutes);
+apiRouter.get('/health', (req, res) => {
+  res.json({ status: 'UP', timestamp: new Date().toISOString() });
+});
 
 app.use('/api', apiRouter);
 

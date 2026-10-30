@@ -9,6 +9,8 @@
     "build": "prisma generate",
     "postinstall": "prisma generate",
     "start": "node src/server.js",
+    "db:push": "prisma db push",
+    "deploy:init": "prisma db push && node prisma/seed.js",
     "lint": "eslint src --ext .js",
     "test": "vitest run",
     "seed": "node prisma/seed.js",
