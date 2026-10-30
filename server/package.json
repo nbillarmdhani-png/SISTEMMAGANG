@@ -6,6 +6,8 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "build": "prisma generate",
+    "postinstall": "prisma generate",
     "start": "node src/server.js",
     "lint": "eslint src --ext .js",
     "test": "vitest run",

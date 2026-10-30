@@ -7,9 +7,9 @@ const server = http.createServer(app);
 
 const PORT = env.PORT;
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   initCronJobs();
-  console.log(`[SERVER] Mendengarkan di http://localhost:${PORT}`);
+  console.log(`[SERVER] Mendengarkan di port ${PORT} (0.0.0.0:${PORT})`);
   console.log(`[ENV] Node Environment: ${env.NODE_ENV}`);
 });
 

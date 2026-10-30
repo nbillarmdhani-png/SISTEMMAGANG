@@ -116,6 +116,7 @@ function ProfileTab({ user, onRefresh }) {
             <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-white shadow-lg bg-slate-100 flex items-center justify-center">
               {mhs.foto ? (
                 <img
+                  crossOrigin="use-credentials"
                   src={mhs.foto.startsWith("http") ? mhs.foto : `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/students/files/${mhs.foto}`}
                   alt="Profile"
                   className="h-full w-full object-cover"

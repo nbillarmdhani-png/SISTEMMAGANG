@@ -22,10 +22,16 @@ const app = express();
 
 // Security middlewares
 app.set('trust proxy', 1); // Trust first proxy (Render, Nginx, dll) untuk rate limiter
-app.use(helmet());
-const allowedOrigins = env.CLIENT_URL.includes(',')
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+}));
+
+const rawOrigins = env.CLIENT_URL.includes(',')
   ? env.CLIENT_URL.split(',').map((u) => u.trim())
-  : env.CLIENT_URL;
+  : [env.CLIENT_URL.trim()];
+
+// Buang trailing slash agar pencocokan origin CORS selalu akurat
+const allowedOrigins = rawOrigins.map((u) => u.replace(/\/+$/, ''));
 
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(cookieParser());
