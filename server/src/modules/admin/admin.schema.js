@@ -46,6 +46,7 @@ export const positionSchemaBase = z.object({
   min_semester: z.coerce.number().int().min(1).max(14).optional().nullable(),
   min_ipk: z.coerce.number().min(0).max(4).optional().nullable(),
   is_remote: z.coerce.number().int().min(0).max(1).default(0),
+  link_pendaftaran: z.string().url('URL tidak valid').optional().or(z.literal('')).nullable(),
   status: z.enum(['draft', 'aktif', 'ditutup']).default('draft'),
   kompetensi: z.array(kompetensiItemSchema).optional(),
 });

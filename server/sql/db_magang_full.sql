@@ -156,6 +156,7 @@ CREATE TABLE IF NOT EXISTS `lowongan_magang` (
   `min_semester` TINYINT DEFAULT NULL,
   `min_ipk` DECIMAL(3,2) DEFAULT NULL,
   `is_remote` TINYINT(1) NOT NULL DEFAULT 0,
+  `link_pendaftaran` VARCHAR(500) DEFAULT NULL,
   `status` ENUM('draft','aktif','ditutup') NOT NULL DEFAULT 'draft',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

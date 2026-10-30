@@ -33,6 +33,7 @@ const schema = z.object({
   min_semester: z.coerce.number().int().min(1).max(14).optional().nullable(),
   min_ipk: z.coerce.number().min(0).max(4).optional().nullable(),
   is_remote: z.coerce.number().int().min(0).max(1),
+  link_pendaftaran: z.string().url("URL tidak valid").optional().or(z.literal("")).nullable(),
   status: z.enum(["draft", "aktif", "ditutup"]),
   kompetensi: z.array(kompetensiItem).optional(),
 }).refine((d) => !d.tgl_buka || !d.tgl_tutup || d.tgl_tutup >= d.tgl_buka, {
@@ -51,6 +52,7 @@ const defaultValues = {
   min_semester: "",
   min_ipk: "",
   is_remote: 0,
+  link_pendaftaran: "",
   status: "draft",
   kompetensi: [],
 }
@@ -126,6 +128,7 @@ export default function AdminPosisi() {
       min_semester: pos.min_semester ?? "",
       min_ipk: pos.min_ipk ?? "",
       is_remote: pos.is_remote,
+      link_pendaftaran: pos.link_pendaftaran ?? "",
       status: pos.status,
       kompetensi: (pos.lowongan_kompetensi ?? []).map((lk) => ({
         kompetensi_id: lk.kompetensi_id,
@@ -347,6 +350,24 @@ export default function AdminPosisi() {
                 placeholder="Deskripsi singkat posisi..."
                 id="input-deskripsi"
               />
+            </div>
+
+            {/* Link Pendaftaran Resmi */}
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                Link Pendaftaran Resmi (Portal Karir / Google Form)
+              </label>
+              <input
+                {...register("link_pendaftaran")}
+                type="url"
+                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="https://careers.perusahaan.com/jobs/..."
+                id="input-link-pendaftaran"
+              />
+              {errors.link_pendaftaran && <p className="mt-1 text-xs text-red-500">{errors.link_pendaftaran.message}</p>}
+              <p className="mt-1 text-xs text-slate-400">
+                Mahasiswa akan diarahkan ke link ini saat mengklik tombol lamar di situs resmi.
+              </p>
             </div>
           </div>
 

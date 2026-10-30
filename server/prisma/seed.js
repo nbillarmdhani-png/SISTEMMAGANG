@@ -353,17 +353,29 @@ async function main() {
   let lowonganCount = 0;
   for (const l of lowonganData) {
     const { kompetensi, ...lowonganFields } = l;
+    const perus = perusahaans.find((p) => p.id === lowonganFields.perusahaan_id);
+    const linkPendaftaran = lowonganFields.link_pendaftaran || (perus?.website ? `${perus.website}/careers` : 'https://kampusmerdeka.kemdikbud.go.id/program/magang');
+
     const existing = await prisma.lowongan_magang.findFirst({
       where: { judul_posisi: lowonganFields.judul_posisi, perusahaan_id: lowonganFields.perusahaan_id },
     });
 
     let lowongan;
     if (existing) {
-      lowongan = existing;
+      lowongan = await prisma.lowongan_magang.update({
+        where: { id: existing.id },
+        data: {
+          ...lowonganFields,
+          link_pendaftaran: linkPendaftaran,
+          tgl_buka: new Date(lowonganFields.tgl_buka),
+          tgl_tutup: new Date(lowonganFields.tgl_tutup),
+        },
+      });
     } else {
       lowongan = await prisma.lowongan_magang.create({
         data: {
           ...lowonganFields,
+          link_pendaftaran: linkPendaftaran,
           tgl_buka: new Date(lowonganFields.tgl_buka),
           tgl_tutup: new Date(lowonganFields.tgl_tutup),
         },
