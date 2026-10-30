@@ -6,8 +6,8 @@ import { env } from '../config/env.js';
 import { AppError } from '../utils/AppError.js';
 import { MAX_FILE_SIZE_MB, ALLOWED_CV_TYPES, ALLOWED_IMAGE_TYPES } from '../utils/constants.js';
 
-// Pastikan folder uploads ada
-const uploadDir = path.resolve(env.UPLOAD_DIR);
+// Pastikan folder uploads ada (gunakan /tmp/uploads jika berjalan di lingkungan serverless Vercel)
+const uploadDir = process.env.VERCEL ? '/tmp/uploads' : path.resolve(env.UPLOAD_DIR);
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
 const storage = multer.diskStorage({
