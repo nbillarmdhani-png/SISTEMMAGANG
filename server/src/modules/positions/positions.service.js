@@ -14,14 +14,20 @@ export async function getPositions(filters = {}) {
   if (q) {
     where.judul_posisi = { contains: q };
   }
+
+  const perusahaanWhere = {};
   if (kota) {
-    where.kota = { contains: kota };
-  }
-  if (is_remote !== undefined) {
-    where.is_remote = is_remote === 'true';
+    perusahaanWhere.kota = { contains: kota };
   }
   if (bidang_usaha) {
-    where.perusahaan = { bidang_usaha: { contains: bidang_usaha } };
+    perusahaanWhere.bidang_usaha = { contains: bidang_usaha };
+  }
+  if (Object.keys(perusahaanWhere).length > 0) {
+    where.perusahaan = perusahaanWhere;
+  }
+
+  if (is_remote !== undefined && is_remote !== '') {
+    where.is_remote = is_remote === 'true';
   }
 
   const [data, total] = await Promise.all([
